@@ -25,7 +25,7 @@ class LabelType extends ElementoAbstract
     public function render()
     {
         $output = "<label for='{$this->for->getId()}' id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' > {$this->getValue()} </label>";
-
+        echo $output;
     }
 
 }

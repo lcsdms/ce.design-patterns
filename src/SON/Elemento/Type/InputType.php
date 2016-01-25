@@ -9,6 +9,7 @@ class InputType extends ElementoAbstract
     private $type;
     private $placeholder;
     private $value;
+    //TODO Verificar sobrecarga de método para construtor também incluir Labels no processo, ao inves de deixar classe de label separada
 
     public function __construct($id, $name,$class,$type)
     {
