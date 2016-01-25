@@ -9,13 +9,17 @@ class InputType extends ElementoAbstract
     private $type;
     private $placeholder;
     private $value;
-    //TODO Verificar sobrecarga de método para construtor também incluir Labels no processo, ao inves de deixar classe de label separada
+    private $textLabel;
+    private $labelClass;
 
-    public function __construct($id, $name,$class,$type)
+    public function __construct($id, $name,$class,$type, $textLabel = null,$labelClass = null)
     {
         parent::__construct($id, $name, $class);
         $this->type= $type;
+        $this->textLabel= $textLabel;
+        $this->labelClass= $labelClass;
     }
+
 
     public function setPlaceholder($placeholder)
     {
@@ -29,7 +33,14 @@ class InputType extends ElementoAbstract
 
     public function render()
     {
-     $output = "<input type='$this->type' id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' ";
+        if(!is_null($this->textLabel)){
+            $output = "<label for='{$this->getId()}' ";
+            if(!is_null($this->labelClass)){
+                $output.= "class='{$this->labelClass}'";
+            }
+            $output .= ">{$this->textLabel}</label> ";
+        }
+     $output .= "<input type='$this->type' id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' ";
         if(!is_null($this->value)){
             $output .= "value='$this->value'";
         }
