@@ -12,7 +12,7 @@ class InputType extends ElementoAbstract
     private $textLabel;
     private $labelClass;
 
-    public function __construct($id, $name,$class,$type, $textLabel = null,$labelClass = null)
+    public function __construct($id, $name,$class,$type,$textLabel = null,$labelClass = null)
     {
         parent::__construct($id, $name, $class);
         $this->type= $type;

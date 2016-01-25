@@ -4,7 +4,7 @@ namespace SON\Elemento\Type;
 
 use SON\Elemento\ElementoAbstract;
 
-class Formulario extends ElementoAbstract
+class FormularioType extends ElementoAbstract
 {
     private $method;
     private $elementos;
@@ -20,9 +20,11 @@ class Formulario extends ElementoAbstract
     }
 
     public function render(){
-        //TODO fazer a renderização do formulario em HTML
-        foreach ($this->elementos as $elemento) {
-            $elemento->renderizarElemento();
-        }
+        echo "<form id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' method='{$this->method}'>";
+            foreach ($this->elementos as $elemento) {
+                $elemento->render();
+                echo "</br>";
+            }
+        echo "</form>";
     }
 }
