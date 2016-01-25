@@ -13,7 +13,7 @@ class InputType extends ElementoAbstract
     public function __construct($id, $name,$class,$type)
     {
         parent::__construct($id, $name, $class);
-        $this->type= type;
+        $this->type= $type;
     }
 
     public function setPlaceholder($placeholder)
@@ -28,11 +28,11 @@ class InputType extends ElementoAbstract
 
     public function render()
     {
-        $output = "<input type='$this->type' id='$this->getid();' name='$this->getName();' class='$this->getClass();' ";
+     $output = "<input type='$this->type' id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' ";
         if(!is_null($this->value)){
-            $output += "value='$this->value'";
+            $output .= "value='$this->value'";
         }
-        $output += "/>";
+        $output .= "/>";
         echo $output;
     }
 

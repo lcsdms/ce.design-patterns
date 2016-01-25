@@ -8,15 +8,24 @@ use SON\Elemento\ElementoAbstract;
 
 class LabelType extends ElementoAbstract
 {
-    public function __construct($id, $name, $class,$value)
+    private $for;
+    private $value;
+    public function __construct($id, $name, $class,$value,ElementoAbstract $for)
     {
         parent::__construct($id, $name, $class);
         $this->value = $value;
+        $this->for= $for;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
     }
 
     public function render()
     {
-        // TODO: Implement render() method.
+        $output = "<label for='{$this->for->getId()}' id='{$this->getId()}' name='{$this->getName()}' class='{$this->getClass()}' > {$this->getValue()} </label>";
+
     }
 
 }
