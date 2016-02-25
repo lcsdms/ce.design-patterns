@@ -1,6 +1,10 @@
 <?php
     require_once ("autoload.php");
-    $formulario = new \SON\Elemento\Type\FormularioType("form1","form1","form-signin","post");
+
+    $request = new \SON\Request();
+    $validator = new \SON\Validator($request);
+
+    $formulario = new \SON\Elemento\Type\FormularioType("form1","form1","form-signin","post",$validator);
     $formulario->adicionarElemento(new \SON\Elemento\Type\InputType("nome","nome","form-control","text","Nome do usuário"));
     $formulario->adicionarElemento(new \SON\Elemento\Type\InputType("email","email","form-control","email","Email do usuário"));
     $formulario->adicionarElemento(new \SON\Elemento\Type\ButtonType("submit","envia-form","btn btn-lg btn-primary btn-block","submit","Enviar"));
@@ -18,7 +22,6 @@
 </head>
 <body>
    <?php
-    echo "<h1>Formulário Dinâmico</h1>";
     $formulario->render();
    ?>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
